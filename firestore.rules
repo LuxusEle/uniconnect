@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.role == 'admin';
+    }
+    function isBursar() {
+      return isAuthenticated() && (request.auth.token.role == 'bursar' || request.auth.token.role == 'admin');
+    }
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    function hasAnyRole(roles) {
+      return isAuthenticated() && (request.auth.token.role in roles || request.auth.token.role == 'admin');
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isOwner(userId) || hasAnyRole(['admin', 'bursar', 'group_leader']);
+      // Allow creation only if auth matches ID (or admin)
+      allow create: if isOwner(userId) || isAdmin(); 
+      // Allow update of specific fields by owner, full by admin
+      allow update: if isAdmin() || (isOwner(userId) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['phone', 'address', 'photoURL', 'displayName']));
+    }
+
+    // Academic Records (Protected)
+    match /academic_records/{userId} {
+      allow read: if isOwner(userId) || isAdmin() || isBursar();
+      allow write: if isAdmin();
+    }
+
+    // Courses (Public Read, Admin Write)
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isBursar();
+    }
+
+    // Payments
+    match /payments/{paymentId} {
+      allow read: if isOwner(resource.data.userId) || isBursar();
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      // Only Bursar can update status (approve/reject)
+      // TODO: Restrict fields?
+      allow update: if isBursar(); 
+    }
+  }
+}
