@@ -44,3 +44,48 @@ A	~$iversity_presentation_v4.docx
 A	~$iversity_presentation_v5.docx
 Reset branch 'main'
 ADDING FILES 
+warning: in the working copy of 'push_error.log', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'status_final.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'sync_log.txt', LF will be replaced by CRLF the next time Git touches it
+COMMITTING 
+[main 04d529c] Forced Update: Core Modules Implementation
+ 45 files changed, 1701 insertions(+), 22 deletions(-)
+ create mode 100644 branch_info.txt
+ create mode 100644 convert_md_to_docx.py
+ create mode 100644 current_log.txt
+ create mode 100644 current_status.txt
+ create mode 100644 documentation_assets/admin_dashboard_1767153675896.png
+ create mode 100644 documentation_assets/admin_exams_1767154852492.png
+ create mode 100644 documentation_assets/admin_users_1767154817966.png
+ create mode 100644 documentation_assets/bursar_reconcile_1767154961971.png
+ create mode 100644 documentation_assets/staff_dashboard_1767153616296.png
+ create mode 100644 documentation_assets/staff_grading_1767154553064.png
+ create mode 100644 documentation_assets/staff_modules_1767154687154.png
+ create mode 100644 documentation_assets/student_course_reg_1767154439438.png
+ create mode 100644 documentation_assets/student_courses_1767153447559.png
+ create mode 100644 documentation_assets/student_dashboard_1767153338745.png
+ create mode 100644 documentation_assets/student_wallet_1767153511919.png
+ create mode 100644 documentation_assets/uploaded_image_1767151649550.png
+ create mode 100644 force_sync.bat
+ create mode 100644 git_log.txt
+ create mode 100644 git_remote.txt
+ create mode 100644 git_status.txt
+ create mode 100644 local_head.txt
+ create mode 100644 push_error.log
+ create mode 100644 push_result.txt
+ create mode 100644 remote_head.txt
+ create mode 100644 server_debug.log
+ create mode 100644 server_debug_utf8.txt
+ create mode 100644 status_final.txt
+ create mode 100644 status_info.txt
+ create mode 100644 sync_log.txt
+ create mode 100644 university_presentation 11.pdf
+ create mode 100644 university_presentation.docx
+ create mode 100644 university_presentation.md
+ create mode 100644 university_presentation_v2.docx
+ create mode 100644 university_presentation_v3.docx
+ create mode 100644 university_presentation_v4.docx
+ create mode 100644 university_presentation_v5.docx
+ create mode 100644 ~$iversity_presentation_v4.docx
+ create mode 100644 ~$iversity_presentation_v5.docx
+PUSHING 
