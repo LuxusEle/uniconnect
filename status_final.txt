@@ -1,0 +1,50 @@
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   branch_info.txt
+	new file:   convert_md_to_docx.py
+	new file:   current_log.txt
+	new file:   current_status.txt
+	new file:   documentation_assets/admin_dashboard_1767153675896.png
+	new file:   documentation_assets/admin_exams_1767154852492.png
+	new file:   documentation_assets/admin_users_1767154817966.png
+	new file:   documentation_assets/bursar_reconcile_1767154961971.png
+	new file:   documentation_assets/staff_dashboard_1767153616296.png
+	new file:   documentation_assets/staff_grading_1767154553064.png
+	new file:   documentation_assets/staff_modules_1767154687154.png
+	new file:   documentation_assets/student_course_reg_1767154439438.png
+	new file:   documentation_assets/student_courses_1767153447559.png
+	new file:   documentation_assets/student_dashboard_1767153338745.png
+	new file:   documentation_assets/student_wallet_1767153511919.png
+	new file:   documentation_assets/uploaded_image_1767151649550.png
+	new file:   git_log.txt
+	new file:   git_remote.txt
+	new file:   git_status.txt
+	new file:   local_head.txt
+	new file:   push_result.txt
+	new file:   remote_head.txt
+	new file:   server_debug.log
+	new file:   server_debug_utf8.txt
+	modified:   src/app/admin/courses/page.tsx
+	modified:   src/app/admin/registrar/exams/page.tsx
+	modified:   src/app/admin/users/page.tsx
+	modified:   src/app/dashboard/academics/registration/page.tsx
+	modified:   src/app/dashboard/financial/wallet/page.tsx
+	modified:   src/app/staff/grading/page.tsx
+	modified:   src/lib/firebase/schema.ts
+	new file:   status_info.txt
+	new file:   university_presentation 11.pdf
+	new file:   university_presentation.docx
+	new file:   university_presentation.md
+	new file:   university_presentation_v2.docx
+	new file:   university_presentation_v3.docx
+	new file:   university_presentation_v4.docx
+	new file:   university_presentation_v5.docx
+	new file:   ~$iversity_presentation_v4.docx
+	new file:   ~$iversity_presentation_v5.docx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	push_error.log
+	status_final.txt
+

@@ -55,7 +55,7 @@ export interface Enrollment {
 export interface FinanceTransaction {
     id: string;
     studentId: string;
-    type: 'fee' | 'payment' | 'scholarship';
+    type: 'fee' | 'payment' | 'scholarship' | 'credit' | 'debit';
     category: 'semester_fee' | 'exam_fee' | 'hostel_fee' | 'mahapola' | 'bursary';
     amount: number;
     currency: 'LKR';

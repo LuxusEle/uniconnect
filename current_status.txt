@@ -1,0 +1,38 @@
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/app/admin/courses/page.tsx
+	modified:   src/app/admin/registrar/exams/page.tsx
+	modified:   src/app/admin/users/page.tsx
+	modified:   src/app/dashboard/academics/registration/page.tsx
+	modified:   src/app/dashboard/financial/wallet/page.tsx
+	modified:   src/app/staff/grading/page.tsx
+	modified:   src/lib/firebase/schema.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	branch_info.txt
+	convert_md_to_docx.py
+	current_status.txt
+	documentation_assets/
+	git_log.txt
+	git_remote.txt
+	git_status.txt
+	local_head.txt
+	push_result.txt
+	remote_head.txt
+	server_debug.log
+	server_debug_utf8.txt
+	status_info.txt
+	university_presentation 11.pdf
+	university_presentation.docx
+	university_presentation.md
+	university_presentation_v2.docx
+	university_presentation_v3.docx
+	university_presentation_v4.docx
+	university_presentation_v5.docx
+	~$iversity_presentation_v4.docx
+	~$iversity_presentation_v5.docx
+
+no changes added to commit (use "git add" and/or "git commit -a")
