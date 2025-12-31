@@ -1,6 +1,0 @@
-﻿origin	https://github.com/LuxusEle/uniconnect.git (fetch)
-origin	https://github.com/LuxusEle/uniconnect.git (push)
-ums1	https://github.com/LuxusEle/UMS.git (fetch)
-ums1	https://github.com/LuxusEle/UMS.git (push)
-x	https://github.com/LuxusEle/UMSV1.git (fetch)
-x	https://github.com/LuxusEle/UMSV1.git (push)

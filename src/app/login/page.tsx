@@ -140,10 +140,17 @@ export default function LoginPage() {
 
                 } catch (e: any) {
                     console.error("Failed to seed " + u.email, e);
+                    // Add to a visible list if needed, but for now console is key.
+                    // If we want to show it in UI:
+                    // errors.push(`${u.email}: ${e.message}`);
                 }
             }
 
-            setError(`Seeding complete. ${createdCount} accounts processed.`);
+            if (createdCount > 0) {
+                setError(`Seeding complete. ${createdCount} accounts processed.`);
+            } else {
+                setError(`Seeding failed. No accounts processed. Check console for details. (Most likely: Accounts exist with different passwords).`);
+            }
             // Don't sign out automatically so they can see the message, or sign out if preferred.
             await signOut(auth);
 

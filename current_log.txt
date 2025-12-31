@@ -1,5 +1,0 @@
-commit 546cb409f1ae96745fc6b03925a445bbb9cc4550
-Author: Asanke <asanke1@gmail.com>
-Date:   Wed Dec 31 09:32:32 2025 +0530
-
-    Implement full demo data seeding
