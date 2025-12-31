@@ -9,6 +9,8 @@ import {
 import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { UserRole } from "@/lib/firebase/schema";
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 interface SidebarProps {
     role?: UserRole;
@@ -231,8 +233,17 @@ const ModernSidebar = ({ role: propRole }: SidebarProps) => {
             </div>
 
             {/* Footer */}
-            <div className="p-4 text-center border-t border-white/10">
-                <p className="text-xs text-gray-400">v3.1 UMS Blueprint</p>
+            <div className="p-4 border-t border-white/10 space-y-4">
+                <button
+                    onClick={async () => {
+                        await signOut(auth);
+                        router.push("/login"); // Ensure explicit redirect
+                    }}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-red-500/80 text-gray-300 hover:text-white rounded-lg transition-all text-xs font-semibold uppercase tracking-wider"
+                >
+                    Log Out
+                </button>
+                <p className="text-[10px] text-center text-gray-500">v3.1 UMS Blueprint</p>
             </div>
         </div>
     );
