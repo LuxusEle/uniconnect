@@ -76,27 +76,77 @@ export default function LoginPage() {
         try {
             for (const u of demoUsers) {
                 try {
-                    const cred = await createUserWithEmailAndPassword(auth, u.email, u.pass);
-                    await setDoc(doc(db, "users", cred.user.uid), {
-                        email: u.email,
-                        role: u.role,
-                        createdAt: new Date(),
-                        displayName: `Demo ${u.role.charAt(0).toUpperCase() + u.role.slice(1)}`
-                    });
-                    createdCount++;
-                } catch (e: any) {
-                    if (e.code !== 'auth/email-already-in-use') {
-                        console.error("Failed to create " + u.email, e);
+                    // Create Auth User
+                    let uid;
+                    try {
+                        const cred = await createUserWithEmailAndPassword(auth, u.email, u.pass);
+                        uid = cred.user.uid;
+                    } catch (authError: any) {
+                        if (authError.code === 'auth/email-already-in-use') {
+                            // If user exists, try to get UID via login (hacky but works for demo setup)
+                            const login = await signInWithEmailAndPassword(auth, u.email, u.pass);
+                            uid = login.user.uid;
+                        } else {
+                            throw authError; // rethrow other errors
+                        }
                     }
+
+                    if (uid) {
+                        // Set Role & Profile
+                        await setDoc(doc(db, "users", uid), {
+                            email: u.email,
+                            role: u.role,
+                            createdAt: new Date(),
+                            displayName: `Demo ${u.role.charAt(0).toUpperCase() + u.role.slice(1)}`
+                        }, { merge: true });
+
+                        // Seed Role-Specific Data
+                        if (u.role === 'student') {
+                            // Seed Transactions
+                            await setDoc(doc(db, "users", uid, "financial", "wallet"), {
+                                balance: 12500.00,
+                                currency: 'LKR',
+                                updatedAt: new Date()
+                            });
+                            const transactions = [
+                                { id: 'TXN001', date: new Date(2025, 0, 15), amount: 5000, type: 'credit', description: 'Mahapola Scholarship', status: 'completed' },
+                                { id: 'TXN002', date: new Date(2025, 0, 10), amount: -2500, type: 'debit', description: 'Semester Exam Fee', status: 'completed' },
+                                { id: 'TXN003', date: new Date(2024, 11, 28), amount: 15000, type: 'credit', description: 'Bursary Payment', status: 'completed' }
+                            ];
+                            for (const t of transactions) {
+                                await setDoc(doc(db, "users", uid, "financial", "wallet", "transactions", t.id), t);
+                            }
+
+                            // Seed Results
+                            const results = [
+                                { courseCode: 'CS101', title: 'Intro to CS', grade: 'A', gpa: 4.0, semester: 'Sem 1' },
+                                { courseCode: 'CS102', title: 'Algorithms', grade: 'B+', gpa: 3.3, semester: 'Sem 1' },
+                                { courseCode: 'MA101', title: 'Calculus', grade: 'A-', gpa: 3.7, semester: 'Sem 1' }
+                            ];
+                            for (const r of results) {
+                                await setDoc(doc(db, "users", uid, "academics", "results", "history", r.courseCode), r);
+                            }
+                        }
+
+                        if (u.role === 'staff') {
+                            // Seed Modules
+                            await setDoc(doc(db, "users", uid, "academic", "schedule"), {
+                                nextClass: "CS102 - Room 405 (10:00 AM)"
+                            });
+                        }
+
+                        createdCount++;
+                    }
+
+                } catch (e: any) {
+                    console.error("Failed to seed " + u.email, e);
                 }
             }
 
-            if (createdCount > 0) {
-                setError(`Created ${createdCount} new demo accounts. You can now login.`);
-                await signOut(auth);
-            } else {
-                setError("Demo accounts already exist.");
-            }
+            setError(`Seeding complete. ${createdCount} accounts processed.`);
+            // Don't sign out automatically so they can see the message, or sign out if preferred.
+            await signOut(auth);
+
         } catch (err: any) {
             setError("Setup failed: " + err.message);
         } finally {
