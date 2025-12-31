@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { auth, db } from "@/lib/firebase";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -56,6 +56,49 @@ export default function LoginPage() {
         } catch (err: any) {
             console.error(err);
             setError("Failed to log in. Please check your credentials.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const createDemoAccounts = async () => {
+        setLoading(true);
+        setError("");
+        const demoUsers = [
+            { email: "admin@unipay.lk", pass: "123456", role: "admin" },
+            { email: "staff@unipay.lk", pass: "123456", role: "staff" },
+            { email: "student@unipay.lk", pass: "123456", role: "student" },
+            { email: "bursar@unipay.lk", pass: "123456", role: "bursar" },
+        ];
+
+        let createdCount = 0;
+
+        try {
+            for (const u of demoUsers) {
+                try {
+                    const cred = await createUserWithEmailAndPassword(auth, u.email, u.pass);
+                    await setDoc(doc(db, "users", cred.user.uid), {
+                        email: u.email,
+                        role: u.role,
+                        createdAt: new Date(),
+                        displayName: `Demo ${u.role.charAt(0).toUpperCase() + u.role.slice(1)}`
+                    });
+                    createdCount++;
+                } catch (e: any) {
+                    if (e.code !== 'auth/email-already-in-use') {
+                        console.error("Failed to create " + u.email, e);
+                    }
+                }
+            }
+
+            if (createdCount > 0) {
+                setError(`Created ${createdCount} new demo accounts. You can now login.`);
+                await signOut(auth);
+            } else {
+                setError("Demo accounts already exist.");
+            }
+        } catch (err: any) {
+            setError("Setup failed: " + err.message);
         } finally {
             setLoading(false);
         }
@@ -168,6 +211,14 @@ export default function LoginPage() {
                             Bursar
                         </button>
                     </div>
+
+                    <button
+                        type="button"
+                        onClick={createDemoAccounts}
+                        className="mt-4 w-full text-[10px] text-gray-400 hover:text-gray-600 underline text-center block"
+                    >
+                        Initialize Demo Accounts
+                    </button>
                 </div>
             </div>
         </div>
