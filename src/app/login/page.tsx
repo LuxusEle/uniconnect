@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -18,17 +19,40 @@ export default function LoginPage() {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            // Get ID token result to check claims
-            const tokenResult = await userCredential.user.getIdTokenResult();
-            const role = tokenResult.claims.role;
+            const user = userCredential.user;
 
-            if (role === 'admin') {
-                router.push("/admin/verifications");
-            } else if (role === 'bursar') {
-                router.push("/bursar/reconcile");
-            } else {
-                router.push("/dashboard"); // Student dashboard
+            // 1. Try Custom Claims
+            const tokenResult = await user.getIdTokenResult();
+            let role = tokenResult.claims.role;
+
+            // 2. Fallback to Firestore if claim is missing
+            if (!role) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (userDoc.exists()) {
+                    role = userDoc.data().role;
+                    console.log("Fetched role from Firestore:", role);
+                }
             }
+
+            // 3. Routing based on role
+            switch (role) {
+                case 'admin':
+                    router.push("/admin");
+                    break;
+                case 'bursar':
+                    router.push("/bursar");
+                    break;
+                case 'staff':
+                    router.push("/staff");
+                    break;
+                case 'dean':
+                    router.push("/admin"); // Redirect Dean to admin for now, or specific dashboard if created
+                    break;
+                default:
+                    router.push("/dashboard"); // Default to Student Dashboard
+                    break;
+            }
+
         } catch (err: any) {
             console.error(err);
             setError("Failed to log in. Please check your credentials.");
