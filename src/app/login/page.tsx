@@ -123,18 +123,50 @@ export default function LoginPage() {
                 </form>
 
                 {/* Helper for demo */}
-                <div className="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800 text-center">
-                    <p className="text-xs text-gray-400 mb-2">Don't have an account?</p>
-                    <a href="#" className="text-sm font-bold text-blue-500 hover:text-blue-600">Sign up</a>
+                <div className="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800">
+                    <p className="text-xs text-center text-gray-400 mb-4">Quick Login (Testing)</p>
 
-                    <div className="mt-6 p-4 bg-gray-50 dark:bg-zinc-800/50 rounded-xl text-xs text-gray-500 text-left">
-                        <p className="font-bold mb-1">Demo Credentials:</p>
-                        <div className="flex justify-between">
-                            <span>Admin:</span> <span className="font-mono">admin@unipay.lk</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span>Pass:</span> <span className="font-mono">123456</span>
-                        </div>
+                    <div className="grid grid-cols-2 gap-3">
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setEmail("admin@unipay.lk");
+                                setPassword("123456");
+                            }}
+                            className="p-2 bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-900/20 dark:hover:bg-red-900/30 dark:text-red-400 rounded-lg text-xs font-bold transition-colors"
+                        >
+                            Admin
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setEmail("staff@unipay.lk");
+                                setPassword("123456");
+                            }}
+                            className="p-2 bg-amber-50 hover:bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:hover:bg-amber-900/30 dark:text-amber-400 rounded-lg text-xs font-bold transition-colors"
+                        >
+                            Staff
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setEmail("student@unipay.lk");
+                                setPassword("123456");
+                            }}
+                            className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 dark:text-blue-400 rounded-lg text-xs font-bold transition-colors"
+                        >
+                            Student
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setEmail("bursar@unipay.lk");
+                                setPassword("123456");
+                            }}
+                            className="p-2 bg-green-50 hover:bg-green-100 text-green-600 dark:bg-green-900/20 dark:hover:bg-green-900/30 dark:text-green-400 rounded-lg text-xs font-bold transition-colors"
+                        >
+                            Bursar
+                        </button>
                     </div>
                 </div>
             </div>
