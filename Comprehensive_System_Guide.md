@@ -81,21 +81,21 @@ graph LR
     *   **Goal Tracking**: Set targets (e.g., "Increase Research Output by 20%").
     *   **Metric Definition**: Quantifiable success criteria.
 *   **Usage**: Used during Senate meetings to review progress.
-![QA Dashboard](public/assets/screenshots/admin_qa_metrics_1767170807210.png)
+<img src="./public/assets/screenshots/admin_qa_metrics_1767170807210.png" width="800" alt="QA Dashboard" />
 
 #### **University Funds Management**
 *   **Business Function**: Centralized ledger for tracking university capital and operational funds.
 *   **Key Features**:
     *   **Fund Isolation**: Separate tracking for "Vice Chancellor's Fund", "Development Fund", etc.
     *   **Status Flags**: Active, Frozen, or Depleted states.
-![Funds List](public/assets/screenshots/admin_funds_1767170821462.png)
+<img src="./public/assets/screenshots/admin_funds_1767170821462.png" width="800" alt="Funds List" />
 
 #### **Internal Audit & Compliance**
 *   **Business Function**: Risk management and governance.
 *   **Key Features**:
     *   **Risk Grading**: High/Medium/Low assessment.
     *   **Departmental Scope**: Tag audits to specific faculties or units.
-![Internal Audit](public/assets/screenshots/admin_audit_1767170845706.png)
+<img src="./public/assets/screenshots/admin_audit_1767170845706.png" width="800" alt="Internal Audit" />
 
 ---
 
@@ -107,14 +107,14 @@ graph LR
 *   **Key Capabilities**:
     *   **Installment Tracking**: View history of monthly payments.
     *   **Self-Service Updates**: Students update their own bank details to reduce admin overhead.
-![Mahapola Dashboard](public/assets/screenshots/student_mahapola_1767170929930.png)
+<img src="./public/assets/screenshots/student_mahapola_1767170929930.png" width="800" alt="Mahapola Dashboard" />
 
 #### **Welfare & Accommodation**
 *   **Business Function**: Manages resources based on need and policy (e.g., distance rule).
 *   **Key Capabilities**:
     *   **Distance-Based Priority**: Algorithmic prioritization for students >25km away.
     *   **Capacity Management**: Real-time view of hostel availability.
-![Hostel Accommodation](public/assets/screenshots/student_hostel_1767170950446.png)
+<img src="./public/assets/screenshots/student_hostel_1767170950446.png" width="800" alt="Hostel Accommodation" />
 
 ---
 
@@ -126,14 +126,14 @@ graph LR
 *   **Key Capabilities**:
     *   **Granular Logging**: Distinguish between "Lecture Hours", "Paper Marking", and "Research".
     *   **Transparency**: Staff can view their own accumulated service hours.
-![Work Accountability Log](public/assets/screenshots/staff_work_log_1767171106860.png)
+<img src="./public/assets/screenshots/staff_work_log_1767171106860.png" width="800" alt="Work Accountability Log" />
 
 #### **Research Ecosystem**
 *   **Business Function**: Aggregates university research output for ranking and funding purposes.
 *   **Key Capabilities**:
     *   **Citation Tracking**: Record Impact Factors and Citation Indices.
     *   **Grant Management**: Track external funding sources and utilization.
-![Research Publications](public/assets/screenshots/staff_publications_1767171134577.png)
+<img src="./public/assets/screenshots/staff_publications_1767171134577.png" width="800" alt="Research Publications" />
 
 ---
 
