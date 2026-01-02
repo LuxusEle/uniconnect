@@ -108,9 +108,10 @@ export async function POST(req: NextRequest) {
             // Handle Tool Calls
             for (const call of functionCalls) {
                 const { name, args } = call;
+                const toolArgs = args as any;
 
                 // Permission Check
-                if (!canPerformAction(role, name, args)) {
+                if (!canPerformAction(role, name, toolArgs)) {
                     finalText += `[PERMISSION DENIED] I cannot perform '${name}' as a ${role}. Please contact an Administrator. `;
                     continue;
                 }
@@ -118,9 +119,9 @@ export async function POST(req: NextRequest) {
                 // Execute Tool (Mocked for Demo if DB not fully set)
                 // In production, valid calls would execute here.
                 if (name === 'readRecord') {
-                    finalText += `(Reading record ${args.collection}/${args.id}...) [Data Fetched] `;
+                    finalText += `(Reading record ${toolArgs.collection}/${toolArgs.id}...) [Data Fetched] `;
                 } else if (name === 'notifyRole') {
-                    finalText += `(Notification sent to ${args.targetRole}: "${args.message}") ✅ `;
+                    finalText += `(Notification sent to ${toolArgs.targetRole}: "${toolArgs.message}") ✅ `;
                 }
             }
 
