@@ -65,10 +65,10 @@ export default function LoginPage() {
         setLoading(true);
         setError("");
         const demoUsers = [
-            { email: "admin@unipay.lk", pass: "123456", role: "admin" },
-            { email: "staff@unipay.lk", pass: "123456", role: "staff" },
-            { email: "student@unipay.lk", pass: "123456", role: "student" },
-            { email: "bursar@unipay.lk", pass: "123456", role: "bursar" },
+            { email: "admin@uniconnect.lk", pass: "123456", role: "admin" },
+            { email: "staff@uniconnect.lk", pass: "123456", role: "staff" },
+            { email: "student@uniconnect.lk", pass: "123456", role: "student" },
+            { email: "bursar@uniconnect.lk", pass: "123456", role: "bursar" },
         ];
 
         let createdCount = 0;
@@ -171,7 +171,7 @@ export default function LoginPage() {
                     <div className="w-16 h-16 bg-gradient-to-tl from-blue-600 to-cyan-400 rounded-xl shadow-soft-md mx-auto flex items-center justify-center text-white mb-4">
                         <span className="text-2xl font-bold">U</span>
                     </div>
-                    <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">UniPay Connect</h1>
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">UniConnect</h1>
                     <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Enter your email and password to sign in</p>
                 </div>
 
@@ -230,7 +230,7 @@ export default function LoginPage() {
                         <button
                             type="button"
                             onClick={() => {
-                                setEmail("admin@unipay.lk");
+                                setEmail("admin@uniconnect.lk");
                                 setPassword("123456");
                             }}
                             className="p-2 bg-red-50 hover:bg-red-100 text-red-600 dark:bg-red-900/20 dark:hover:bg-red-900/30 dark:text-red-400 rounded-lg text-xs font-bold transition-colors"
@@ -240,7 +240,7 @@ export default function LoginPage() {
                         <button
                             type="button"
                             onClick={() => {
-                                setEmail("staff@unipay.lk");
+                                setEmail("staff@uniconnect.lk");
                                 setPassword("123456");
                             }}
                             className="p-2 bg-amber-50 hover:bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:hover:bg-amber-900/30 dark:text-amber-400 rounded-lg text-xs font-bold transition-colors"
@@ -250,7 +250,7 @@ export default function LoginPage() {
                         <button
                             type="button"
                             onClick={() => {
-                                setEmail("student@unipay.lk");
+                                setEmail("student@uniconnect.lk");
                                 setPassword("123456");
                             }}
                             className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 dark:text-blue-400 rounded-lg text-xs font-bold transition-colors"
@@ -260,7 +260,7 @@ export default function LoginPage() {
                         <button
                             type="button"
                             onClick={() => {
-                                setEmail("bursar@unipay.lk");
+                                setEmail("bursar@uniconnect.lk");
                                 setPassword("123456");
                             }}
                             className="p-2 bg-green-50 hover:bg-green-100 text-green-600 dark:bg-green-900/20 dark:hover:bg-green-900/30 dark:text-green-400 rounded-lg text-xs font-bold transition-colors"

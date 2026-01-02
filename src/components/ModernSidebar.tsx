@@ -243,7 +243,7 @@ const ModernSidebar = ({ role: propRole }: SidebarProps) => {
                 >
                     Log Out
                 </button>
-                <p className="text-[10px] text-center text-gray-500">v3.1 UMS Blueprint</p>
+                <p className="text-[10px] text-center text-gray-500">v3.1 UniConnect</p>
             </div>
         </div>
     );

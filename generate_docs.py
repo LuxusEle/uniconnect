@@ -183,8 +183,18 @@ def generate_document():
         with open(CONFIG['output_filename'], "w", encoding="utf-8") as f:
             f.write(full_content)
         print(f"✅ Success! Document saved as: {CONFIG['output_filename']}")
+        
+        # Auto-generate PDF
+        import subprocess
+        pdf_filename = CONFIG['output_filename'].replace('.md', '.pdf')
+        print(f"🔄 Converting to PDF: {pdf_filename}...")
+        subprocess.run(["mdpdf", "-o", pdf_filename, CONFIG['output_filename']], check=True)
+        print(f"✅ PDF generated successfully: {pdf_filename}")
+        
     except IOError as e:
         print(f"❌ Error writing file: {e}")
+    except Exception as e:
+        print(f"⚠️ PDF generation failed (ensure 'mdpdf' is installed): {e}")
 
 if __name__ == "__main__":
     generate_document()
