@@ -1,22 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI, FunctionDeclarationSchemaType } from '@google/generative-ai';
+import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
 import { adminDb } from '@/lib/firebase/admin'; // We need admin SDK for backend ops
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 // Define Tools
-const tools = [
+const tools: any[] = [
     {
         functionDeclarations: [
             {
                 name: "readRecord",
                 description: "Read a record from the database. Use this to fetch grades, fees, or profile info.",
                 parameters: {
-                    type: FunctionDeclarationSchemaType.OBJECT,
+                    type: SchemaType.OBJECT,
                     properties: {
-                        collection: { type: FunctionDeclarationSchemaType.STRING, description: "Collection path (e.g. 'users', 'courses')" },
-                        id: { type: FunctionDeclarationSchemaType.STRING, description: "Document ID" }
+                        collection: { type: SchemaType.STRING, description: "Collection path (e.g. 'users', 'courses')" },
+                        id: { type: SchemaType.STRING, description: "Document ID" }
                     },
                     required: ["collection", "id"]
                 }
@@ -25,10 +25,10 @@ const tools = [
                 name: "notifyRole",
                 description: "Send a notification/request to another role (e.g. Dean, Staff).",
                 parameters: {
-                    type: FunctionDeclarationSchemaType.OBJECT,
+                    type: SchemaType.OBJECT,
                     properties: {
-                        targetRole: { type: FunctionDeclarationSchemaType.STRING, description: "Target role (admin, dean, staff)" },
-                        message: { type: FunctionDeclarationSchemaType.STRING, description: "Message content" }
+                        targetRole: { type: SchemaType.STRING, description: "Target role (admin, dean, staff)" },
+                        message: { type: SchemaType.STRING, description: "Message content" }
                     },
                     required: ["targetRole", "message"]
                 }
