@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
-import { adminDb } from '@/lib/firebase/admin'; // We need admin SDK for backend ops
+// import { adminDb } from '@/lib/firebase/admin'; // Commented out until Admin SDK is set up
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
